@@ -18,9 +18,9 @@ void Chat::login()
 
 	do
 	{
-		cout << "Ëîãèí: ";
+		cout << "Ã‹Ã®Ã£Ã¨Ã­: ";
 		cin >> login;
-		cout << "Ïàðîëü: ";
+		cout << "ÃÃ Ã°Ã®Ã«Ã¼: ";
 		cin >> pass;
 
 		_currentUser = getUserByLogin(login);
@@ -29,8 +29,8 @@ void Chat::login()
 		{
 			_currentUser = nullptr;
 
-			cout << "Îøèáêà: íåò òàêîãî ëîãèíà " << endl;
-			cout << " Q - äëÿ âûõîäà èëè ëþáóþ êëàâèøó äëÿ ïðîäîëæåíèÿ ";
+			cout << "ÃŽÃ¸Ã¨Ã¡ÃªÃ : Ã­Ã¥Ã² Ã²Ã ÃªÃ®Ã£Ã® Ã«Ã®Ã£Ã¨Ã­Ã  " << endl;
+			cout << " Q - Ã¤Ã«Ã¿ Ã¢Ã»ÃµÃ®Ã¤Ã  Ã¨Ã«Ã¨ Ã«Ã¾Ã¡Ã³Ã¾ ÃªÃ«Ã Ã¢Ã¨Ã¸Ã³ Ã¤Ã«Ã¿ Ã¯Ã°Ã®Ã¤Ã®Ã«Ã¦Ã¥Ã­Ã¨Ã¿ ";
 			cin >> operation;
 			if (operation == 'q')
 				break;
@@ -44,11 +44,11 @@ void Chat::signUp()
 	string name;
 	string pass;
 
-	cout << "Ëîãèí: ";
+	cout << "Ã‹Ã®Ã£Ã¨Ã­: ";
 	cin >> login;
-	cout << "Èìÿ: ";
+	cout << "ÃˆÃ¬Ã¿: ";
 	cin >> name;
-	cout << "Ïàðîëü: ";
+	cout << "ÃÃ Ã°Ã®Ã«Ã¼: ";
 	cin >> pass;
 
 	if (getUserByLogin(login) || login == "all")
@@ -75,21 +75,20 @@ void Chat::showChat() const
 
 	for (auto& message : _messageAll)
 	{
-		//Ïîêàçûâàåò ñîîáùåíèÿ äëÿ òåêóùåãî ïîëüçîâàòåëÿ äëÿ íåãî è äëÿ âñåõ.
-		//if (//_currentUser->getUserLogin() == messade.getFrom() )//|| _currentUser->getUserLogin() == message.getTo() ||(
-		if (	message.getTo() == "all")
+		//ÃÃ®ÃªÃ Ã§Ã»Ã¢Ã Ã¥Ã² Ã±Ã®Ã®Ã¡Ã¹Ã¥Ã­Ã¨Ã¿ Ã¤Ã«Ã¿ Ã²Ã¥ÃªÃ³Ã¹Ã¥Ã£Ã® Ã¯Ã®Ã«Ã¼Ã§Ã®Ã¢Ã Ã²Ã¥Ã«Ã¿ Ã¤Ã«Ã¿ Ã­Ã¥Ã£Ã® Ã¨ Ã¤Ã«Ã¿ Ã¢Ã±Ã¥Ãµ.
+		//if (_currentUser->getUserLogin() == message.getFrom() || _currentUser->getUserLogin() == message.getTo() || message.getTo() == "all")
 		{
-			//ïîäìåíÿåì äëÿ ñåáÿ èìÿ íà me
-			from = (_currentUser->getUserLogin() == message.getFrom()) ? "ÿ" : getUserByLogin(message.getFrom())->getUserName();
+			//Ã¯Ã®Ã¤Ã¬Ã¥Ã­Ã¿Ã¥Ã¬ Ã¤Ã«Ã¿ Ã±Ã¥Ã¡Ã¿ Ã¨Ã¬Ã¿ Ã­Ã  me
+			from = (_currentUser->getUserLogin() == message.getFrom()) ? "Ã¿" : getUserByLogin(message.getFrom())->getUserName();
 			if (message.getTo() == "all")
 			{
 				to = "(all)";
 			}
 			else
 			{
-				to = (_currentUser->getUserLogin() == message.getTo()) ? "ÿ" : getUserByLogin(message.getTo())->getUserName();
+				to = (_currentUser->getUserLogin() == message.getTo()) ? "Ã¿" : getUserByLogin(message.getTo())->getUserName();
 			}
-			cout << "Ñîîáùåíèå îò " << from << " äëÿ " << to << endl;
+			cout << "Ã‘Ã®Ã®Ã¡Ã¹Ã¥Ã­Ã¨Ã¥ Ã®Ã² " << from << " Ã¤Ã«Ã¿ " << to << endl;
 		}
  	}
 	cout << "*****************************************************************" << endl;
@@ -103,7 +102,7 @@ void Chat::showLoginMenu()
 	do
 	{
 		cout << "*****************************************************************" << endl;
-		cout  << "  1 - Âîéòè  \t2 - Ðåãèñòðàöèÿ \tQ - Âûõîä" << endl;
+		cout  << "  1 - Ã‚Ã®Ã©Ã²Ã¨  \t2 - ÃÃ¥Ã£Ã¨Ã±Ã²Ã°Ã Ã¶Ã¨Ã¿ \tQ - Ã‚Ã»ÃµÃ®Ã¤" << endl;
 		cout << "*****************************************************************" << endl;
 		cout << "> ";
 		cin >> operation;
@@ -137,20 +136,20 @@ void Chat::addMessage()
 {
 	string to, text;
 
-	cout << "Ñîîáùåíèå äëÿ (îòïðàâèòü âñåì - all):_";
+	cout << "Ã‘Ã®Ã®Ã¡Ã¹Ã¥Ã­Ã¨Ã¥ Ã¤Ã«Ã¿ (Ã®Ã²Ã¯Ã°Ã Ã¢Ã¨Ã²Ã¼ Ã¢Ã±Ã¥Ã¬ - all):_";
 	cin >> to;
-	cout << "Òåêñò: " << endl;;
+	cout << "Ã’Ã¥ÃªÃ±Ã²: " << endl;;
 	cin.ignore();
 	getline(cin, text);
 
-	if (!(to == "all" || getUserByName(to)))// åñëè íå óäàëîñü íàéòè ïîëó÷àòåëÿ ïî èìåíè
+	if (!(to == "all" || getUserByName(to)))// Ã¥Ã±Ã«Ã¨ Ã­Ã¥ Ã³Ã¤Ã Ã«Ã®Ã±Ã¼ Ã­Ã Ã©Ã²Ã¨ Ã¯Ã®Ã«Ã³Ã·Ã Ã²Ã¥Ã«Ã¿ Ã¯Ã® Ã¨Ã¬Ã¥Ã­Ã¨
 	{
-		cout << "Îøèáêà: íåò òàêîãî ïîëüçîâàòåëÿ " << to << endl;
+		cout << "ÃŽÃ¸Ã¨Ã¡ÃªÃ : Ã­Ã¥Ã² Ã²Ã ÃªÃ®Ã£Ã® Ã¯Ã®Ã«Ã¼Ã§Ã®Ã¢Ã Ã²Ã¥Ã«Ã¿ " << to << endl;
 		return;
 	}
 	else
 	{
-		cout << "Ñîîáùåíèå îòïðàâëåíî!!" << endl;
+		cout << "Ã‘Ã®Ã®Ã¡Ã¹Ã¥Ã­Ã¨Ã¥ Ã®Ã²Ã¯Ã°Ã Ã¢Ã«Ã¥Ã­Ã®!!" << endl;
 	}
 	if (to == "all")
 		_messageAll.push_back(Message{ _currentUser->getUserLogin(),  "all", text });
@@ -162,12 +161,12 @@ void Chat::showMenu()
 {
 	char operation;
 
-	cout << "Ïðèâåò!!" << _currentUser->getUserName() << endl;
+	cout << "ÃÃ°Ã¨Ã¢Ã¥Ã²!!" << _currentUser->getUserName() << endl;
 
 	while (_currentUser)
 	{
 		cout << "*****************************************************************" << endl;
-		cout << " 1 - ×àò | 2 - Íàïèñàòü ñîîáùåíèå | 3 - Ïîëüçîâàòåëè | Q - Âûõîä " << endl;
+		cout << " 1 - Ã—Ã Ã² | 2 - ÃÃ Ã¯Ã¨Ã±Ã Ã²Ã¼ Ã±Ã®Ã®Ã¡Ã¹Ã¥Ã­Ã¨Ã¥ | 3 - ÃÃ®Ã«Ã¼Ã§Ã®Ã¢Ã Ã²Ã¥Ã«Ã¨ | Q - Ã‚Ã»ÃµÃ®Ã¤ " << endl;
 		cout << "*****************************************************************" << endl;
 		cout << "> ";
 		cin >> operation;
@@ -187,7 +186,7 @@ void Chat::showMenu()
 			_currentUser = nullptr;
 			break;
 		default:
-			cout << "Îøèáêà: âûáîðà, ñïðîáóéòå ùå" << endl;
+			cout << "ÃŽÃ¸Ã¨Ã¡ÃªÃ : Ã¢Ã»Ã¡Ã®Ã°Ã , Ã±Ã¯Ã°Ã®Ã¡Ã³Ã©Ã²Ã¥ Ã¹Ã¥" << endl;
 			break;
 		}
 	}
@@ -195,7 +194,7 @@ void Chat::showMenu()
 
 void Chat::showAllUserName() const
 {
-	cout << "**************************Ïîëüçîâàòåëè**************************" << endl;
+	cout << "**************************ÃÃ®Ã«Ã¼Ã§Ã®Ã¢Ã Ã²Ã¥Ã«Ã¨**************************" << endl;
 
 	for (auto& user : _userAll)
 	{
