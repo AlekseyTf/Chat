@@ -75,10 +75,10 @@ void Chat::showChat() const
 
 	for (auto& message : _messageAll)
 	{
-		//Ïîêàçûâàåò ñîîáùåíèÿ äëÿ òåêóùåãî ïîëüçîâàòåëÿ äëÿ íåãî è äëÿ âñåõ.
-		//if (_currentUser->getUserLogin() == message.getFrom() || _currentUser->getUserLogin() == message.getTo() || message.getTo() == "all")
+		
+		if (_currentUser->getUserLogin() == message.getFrom() || _currentUser->getUserLogin() == message.getTo() || message.getTo() == "all")
 		{
-			//ïîäìåíÿåì äëÿ ñåáÿ èìÿ íà me
+			
 			from = (_currentUser->getUserLogin() == message.getFrom()) ? "ÿ" : getUserByLogin(message.getFrom())->getUserName();
 			if (message.getTo() == "all")
 			{
